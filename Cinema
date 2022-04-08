@@ -1,0 +1,125 @@
+rebook = "y"
+all_seats={}
+while rebook == "y":
+    #Welcome message
+    print("Welcome to the Cinema")
+
+    #asking user for info 
+    user_name = input("What is your name? ")
+    
+    #validating phone number 
+    user_phone = ''
+    while not user_phone.isnumeric():
+        user_phone= input("What is valid phone number? ")
+        if not user_phone.isnumeric():
+            print(" I am sorry. Your phone number not working, please enter different number")
+
+    def movies ():
+        #movie selection
+        print("1 = Iron man")
+        print("2 = Spider-man")
+        print("3 = Batman") 
+        movie = None
+        while movie not in ('1','2','3'):
+            movie = input("Which Movie (1/2/3)? ")
+        match movie:
+            case '1':
+                return "Iron man"
+            case '2':
+                return "Spider-Man"
+            case '3':
+                return "Batman"
+    
+    chosen_movie = movies()
+    print ("You will watch:", chosen_movie)
+
+    def times ():
+        #picking time
+         print( "1 = Morning")
+         print("2 = Afternoon")
+         print("3 = Evening")
+         time = None
+         while time not in ('1','2','3'):
+               time = input("What time (1/2/3)? ")
+         match time:
+            case '1' :
+                return "Morning"
+            case '2' :
+                return "Afternoon"
+            case '3' :
+                return "Evening"
+
+    chosen_time = times() 
+    print ("You will watch this time : ",chosen_time)
+            
+    available_seats = ['(1)', '(2)', '(3)', '(4)', '(5)', '(6)', '(7)', '(8)', '(9)', '(10)']
+    print (available_seats)
+    #booking seat 
+    def seats (seat):
+        seat = seat.lower()
+        match seat :
+            case '1':
+                return 0
+            case '2': 
+                return 1
+            case '3' :
+                return 2
+            case '4' :
+                return 3
+            case '5' :
+                return 4
+            case '6':
+                return 5
+            case '7':
+                return 6
+            case '8': 
+                return 7
+            case '9' :
+                return 8
+            case '10' :
+                return 9
+            case _:
+                return 'Invalid seat'
+
+    #seat validation
+    seat = input('Which seat? ')
+    if (seats(seat)) == 'Invalid seat':
+        while (seats(seat)) == 'Invalid seat':
+            seat = input("which seat?")
+            if (seats(seat)) != 'Invalid seat':
+                available_seats[seats(seat)] = "(X)"
+                break
+            else:
+                print(" ")
+                print("error, input not accept.")
+                print(" ")
+                print(available_seats)
+                seat = input('Which seat? ')
+                print(" ")
+
+    available_seats[seats (seat)] = "(X)"
+
+    print(available_seats)
+   
+
+    #confirming book
+    print('Confirm order: movies: ', chosen_movie, "Time:" ,chosen_time, "Seats:", seat)
+    confirm=''
+    while confirm not in ('y','n'):
+        confirm = (input("Is this info correct Y/N? ")).lower()
+    
+    if confirm == "y" :
+        print ("Your seat has been confirmed")
+    elif confirm == 'n':
+        #Add code to cancell the seats
+        print ("Your reservation has been cancelled")
+
+    rebook=''
+    while rebook not in ('y','n'):
+        rebook = (input("Would you plaese book again Y/N? ")).lower()
+    
+    if confirm == "y" :
+        print ("Rebooking...")
+    elif confirm == 'n':
+        #Add code to cancell the seats
+        print ("Thank you for coming")
